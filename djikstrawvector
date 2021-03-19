@@ -1,0 +1,63 @@
+#include<iostream>
+using namespace std;
+#define INF 999999;
+typedef pair<int, int> ipair;
+
+void addEdge(vector<pair<int, int>> adj[], int u, int v, int w)
+{
+    adj[u].push_back(make_pair(v, w));
+    adj[v].push_back(make_pair(u, w));
+}
+
+void shortestPath(vector<pair<int, int>> adj[], int V, int src)
+{
+    priority_queue<<ipair>, vector<ipair>, greater<ipsir>> pq;
+    vedtor<ipair> dist(V, INF);
+    pq.push_back(make_pair(0, src));
+    dist[src] = 0;
+    while(!pq.empty()){
+        int u = pq.top().second();
+        pq.pop();
+        for(auto x: adj[u])
+        {
+            int v = x.first();
+            int wt = x.second();
+            if (dist[v] > dist[u] + wt)
+            {
+                dist[v] = dist[u] + wt;
+                pq.push_back(make_pair(dist[v], v));
+            }
+        }
+    }
+    for (int l = 0; l < V; ++l)
+    {
+        cout<<dist[l]<<" ";
+    }
+}
+
+
+int main() 
+{ 
+    int V = 9; 
+    vector<ipair> adj[V]; 
+  
+    // making above shown graph 
+    addEdge(adj, 0, 1, 4); 
+    addEdge(adj, 0, 7, 8); 
+    addEdge(adj, 1, 2, 8); 
+    addEdge(adj, 1, 7, 11); 
+    addEdge(adj, 2, 3, 7); 
+    addEdge(adj, 2, 8, 2); 
+    addEdge(adj, 2, 5, 4); 
+    addEdge(adj, 3, 4, 9); 
+    addEdge(adj, 3, 5, 14); 
+    addEdge(adj, 4, 5, 10); 
+    addEdge(adj, 5, 6, 2); 
+    addEdge(adj, 6, 7, 1); 
+    addEdge(adj, 6, 8, 6); 
+    addEdge(adj, 7, 8, 7); 
+  
+    shortestPath(adj, V, 0); 
+  
+    return 0; 
+} 
