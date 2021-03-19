@@ -11,7 +11,7 @@ void addEdge(vector<pair<int, int>> adj[], int u, int v, int w)
 
 void shortestPath(vector<pair<int, int>> adj[], int V, int src)
 {
-    priority_queue<<ipair>, vector<ipair>, greater<ipsir>> pq;
+    priority_queue<<ipair>, vector<ipair>, greater<ipair>> pq;
     vedtor<ipair> dist(V, INF);
     pq.push_back(make_pair(0, src));
     dist[src] = 0;
